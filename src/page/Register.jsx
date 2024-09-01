@@ -5,7 +5,8 @@ import "../css/page/register.css"
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/slice/themeSlice';
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -65,8 +66,15 @@ const Register = () => {
             setError(err.response.data.error);
           });
           };
+          const darkMode = useSelector((state) => state.theme.darkMode);
+      
+       const dispatch = useDispatch(); 
+
+       const themeMode = (darkMode) => {
+        return darkMode ? 'bg-gray-600 w-full text-white ' : 'bg-white text-black';
+        };
     return (
-        <>
+        <div className={themeMode(darkMode)}>
          <div className="p-4">
     
             {showAlert && (
@@ -84,6 +92,11 @@ const Register = () => {
         <div className="tag-input">
         <div className="login">
             <p className="font-bold text-2xl">Sign Up</p>
+            <div className={themeMode(darkMode)}>
+            <button onClick={() => dispatch(toggleTheme())}>
+                Switch to {darkMode ? 'Light' : 'Dark'} Mode
+              </button>
+            </div>
             <p className="mt-4 text-base text-customGreyFont">Let’s get you all st up so you can access your personal account.</p>
         </div>
             <div className="mt-5 grid gap-4">
@@ -98,7 +111,7 @@ const Register = () => {
             {/* <p className="mt-5 text-customGreyFont text-center">Don’t have an account? <span className="text-customRed">Sign up</span></p> */}
         </div>
         </div>
-      </>
+      </div>
     )
 }
 

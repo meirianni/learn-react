@@ -1,6 +1,33 @@
 export const menu = [
     "Home", "Shop", "About"
 ]
+export const browseProduct = [
+    {   "id" : 1,
+        "name" : "Dining",
+        "detailName" : "Dining Room",
+        "diskon" : true,
+        "valueDiskon" : 20,
+        "price" : 2500000,
+        "image" : "https://images.unsplash.com/photo-1657524398377-567034729507?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {   "id" : 2,
+        "name" : "Living",
+        "detailName" : "Living Room",
+        "diskon" : true,
+        "valueDiskon" : 20,
+        "price" : 2500000,
+        "image" : "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {   "id" : 3,
+        "name" : "Bedroom",
+        "detailName" : "Bedroom",
+        "diskon" : true,
+        "valueDiskon" : 20,
+        "price" : 2500000,
+        "image" : "https://images.unsplash.com/photo-1567899482751-c8647fda8155?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+]
+
 export const product = [
     {   "id" : 1,
         "name" : "Syltherine",

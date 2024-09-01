@@ -8,6 +8,11 @@ import axios from "axios";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { menu } from "../helpers/data";
+
+
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/slice/themeSlice';
+
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -72,18 +77,24 @@ const Login = () => {
           });
       };
 
+      const darkMode = useSelector((state) => state.theme.darkMode);
       
+       const dispatch = useDispatch(); 
 
+       const themeMode = (darkMode) => {
+        return darkMode ? 'bg-gray-600 w-full text-white' : 'bg-white text-black';
+        };
+       
     return (
-        <>
+        <div className={themeMode(darkMode)}>
 
-    <div className="p-4">
-    
-      {showAlert && (
-        <Alert message={error}onClose={handleCloseAlert} />
-      )}
-    </div>
-        <div className="logo flex m-10 items-center">
+        <div className="p-4">
+        
+          {showAlert && (
+            <Alert message={error}onClose={handleCloseAlert} />
+          )}
+        </div>
+        <div className={`logo flex m-10 items-center`}>
              <img className="" src={logo} alt="" srcset="" />
              <p className="font-bold p-2 h-10 text-3xl py-2">Userss</p>
         </div>
@@ -91,6 +102,11 @@ const Login = () => {
         <div className="tag-input">
         <div className="login">
             <p className="font-bold text-2xl mt-5">Login</p>
+            <div className={themeMode(darkMode)}>
+            <button onClick={() => dispatch(toggleTheme())}>
+                Switch to {darkMode ? 'Light' : 'Dark'} Mode
+              </button>
+            </div>
             <p className="mt-4 text-base text-customGreyFont">Login to access your user account</p>
         </div>
             <div className="flex flex-col">
@@ -114,7 +130,7 @@ const Login = () => {
         </div>
         </div>
 
-      </>
+      </div>
     )
 }
 
